@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 22nd Birthday Ammulu Akka 🎉</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fbc2eb);
+  background-size: 600% 600%;
+  animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #ff4081;
+}
+
+.slideshow {
+  max-width: 300px;
+  margin: auto;
+  position: relative;
+}
+
+.slideshow img {
+  width: 100%;
+  border-radius: 15px;
+  display: none;
+}
+
+.card {
+  background: white;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 500px;
+  border-radius: 15px;
+  text-align: left;
+}
+
+.cake {
+  font-size: 80px;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  50% { transform: translateY(-15px); }
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background: #ff4081;
+  color: white;
+  cursor: pointer;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+</style>
+</head>
+<body>
+
+<h1>🎂 Happiest 22nd Birthday Ammulu Akka 🎂</h1>
+
+<div class="slideshow">
+  <img src="IMG1" class="slide">
+  <img src="IMG2" class="slide">
+  <img src="IMG3" class="slide">
+  <img src="IMG4" class="slide">
+  <img src="IMG5" class="slide">
+</div>
+
+<div class="card">
+<p><b>💖 Message 💖</b></p>
+<p>
+Happiest 22nd birthday Ammulu akka stay max may ur dreams come true 🎊 be happy keep smiling 😄 nana thank you for everything you have done 🥰 for me and ha u will do everything easy for my life and about my life da .......! 🥲<br><br>
+I don't know how it will be for being elder sister for a brother like me but having sister like u is a heaven abba .......! Nanu artham chekondani very thank you 😅 love you from my bottom of my heart akka .........!<br><br>
+Plzz achieve every that u craving for ... You r the strongest woman I have seen after my mom da .... ☺️ In easy words : u the most powerful, effective creative, joyful and vagera vagera among three of us 😒<br><br>
+U r the magician 🪄 who does all wonderful magic for everyone but not for herself 😤<br><br>
+We three luv u ( including mammy and daddy) for ur presence of happiness matter a lot 🤌🏻<br><br>
+<b>From : your idiot pajju 😎</b>
+</p>
+</div>
+
+<div class="cake">🎂</div>
+
+<button onclick="playMusic()">🎵 Play Song</button>
+
+<canvas id="fireworks"></canvas>
+
+<audio id="song">
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
+<script>
+// slideshow
+let slides = document.querySelectorAll('.slide');
+let index = 0;
+
+function showSlides() {
+  slides.forEach(s => s.style.display = 'none');
+  index++;
+  if(index > slides.length) index = 1;
+  slides[index-1].style.display = 'block';
+  setTimeout(showSlides, 2000);
+}
+showSlides();
+
+function playMusic() {
+  document.getElementById('song').play();
+}
+
+// fireworks
+const canvas = document.getElementById('fireworks');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+function createFirework() {
+  for (let i = 0; i < 50; i++) {
+    particles.push({
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height/2,
+      dx: (Math.random()-0.5)*5,
+      dy: (Math.random()-0.5)*5,
+      life: 100
+    });
+  }
+}
+
+function animate() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach((p, i) => {
+    p.x += p.dx;
+    p.y += p.dy;
+    p.life--;
+    ctx.fillRect(p.x, p.y, 2, 2);
+    if (p.life <= 0) particles.splice(i,1);
+  });
+  requestAnimationFrame(animate);
+}
+
+setInterval(createFirework, 1200);
+animate();
+</script>
+
+</body>
+</html>
